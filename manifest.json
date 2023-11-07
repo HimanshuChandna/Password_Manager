@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "Password Manager",
+    "description": "Stores the username and password, reduces the hassle of keep forgetting the passwords on time",
+    "version": "1.0",
+    "icons": {
+
+        "192": "logo192.png"
+
+    },
+    "action": {
+
+        "default_icon": {
+
+            "192": "logo192.png"
+
+        },
+
+        "default_title": "Password Manager",
+        "default_popup": "popup.html"
+
+    },
+
+    "permissions": [
+
+        "activeTab",
+        "contextMenus"
+
+    ]
+
+}

@@ -1,0 +1,36 @@
+*{
+
+    margin:0px;
+    padding:0px;
+
+}
+
+body{
+
+    width:600px;
+    height:400px;
+    overflow: scroll;
+
+}
+
+.container{
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border:2px solid black;
+    margin:1rem;
+
+
+}
+
+#form{
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+
+}
