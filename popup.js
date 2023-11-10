@@ -20,7 +20,18 @@ document.addEventListener('DOMContentLoaded', function() {
         cell3.innerHTML = password;
         cell3.setAttribute('id', 'cell' + index);
 
-        cell4.innerHTML = '<input type="button" class="btn btn-secondary" value="remove"></input>';
+        // Add a copy button
+        cell4.innerHTML = `<button class="btn btn-secondary copy-btn">Copy</button> <input type="button" class="btn btn-secondary" value="remove"></input>`;
+    }
+
+    // Copy to clipboard function
+    function copyToClipboard(value) {
+        const tempInput = document.createElement('input');
+        tempInput.value = value;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
     }
 
     // Autofill credentials based on the current website
@@ -43,6 +54,10 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem(`password_${currentWebsite}`, cred_password);
         localStorage.setItem('counter', counter);
 
+        // Clear input values
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+
         counter = counter + 1;
     }
 
@@ -63,7 +78,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     table.addEventListener("click", function(event) {
-        if (event.target.classList.contains("btn-secondary")) {
+        if (event.target.classList.contains("btn-secondary") && event.target.classList.contains("copy-btn")) {
+            let row = event.target.parentNode.parentNode;
+            let username = row.cells[1].innerHTML;
+            let password = row.cells[2].innerHTML;
+            copyToClipboard(`Username: ${username}, Password: ${password}`);
+        } else if (event.target.classList.contains("btn-secondary")) {
             let row = event.target.parentNode.parentNode;
             remove_credentials(row);
         }
