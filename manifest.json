@@ -24,8 +24,13 @@
     "permissions": [
 
         "activeTab",
-        "contextMenus"
+        "contextMenus",
+        "storage"
 
-    ]
+    ],
+
+    "content_security_policy": {
+        "extrension_pages": "script-src 'self'; object-src 'self'"
+    }
 
 }
